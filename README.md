@@ -1,6 +1,6 @@
-# Website
+# OGTechStories
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+OGTechStories is a technology learning library built with [Docusaurus](https://docusaurus.io/).
 
 ## Installation
 
@@ -8,7 +8,7 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 npm install
 ```
 
-**Note**: feel free to use the package manager of your choice.
+The project uses Node.js `24.14.0`. The required version is recorded in `.nvmrc`.
 
 ## Local Development
 
@@ -16,7 +16,7 @@ npm install
 npm run start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This starts the local development server. The local-search plugin creates its search index during a production build, so search should be tested with the production commands below.
 
 ## Build
 
@@ -26,18 +26,28 @@ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Deployment
+## Production Preview
 
-Using SSH:
-
-```bash
-USE_SSH=true npm run deploy
-```
-
-Not using SSH:
+Build and serve the generated static site locally:
 
 ```bash
-GIT_USER=<Your GitHub username> npm run deploy
+npm run build
+npm run serve
 ```
 
-If you are using GitHub Pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Cloudflare Pages Deployment
+
+Connect the GitHub repository to Cloudflare Pages with these settings:
+
+- **Framework preset:** Docusaurus
+- **Production branch:** `main`
+- **Build command:** `npm run build`
+- **Build output directory:** `build`
+- **Root directory:** `/`
+- **Node.js version:** `24.14.0`
+
+Add `NODE_VERSION` with value `24.14.0` under Cloudflare Pages project settings if the build image does not pick up `.nvmrc` automatically. Cloudflare will build and deploy every push to the production branch, while other branches can be configured as preview deployments.
+
+Connect the custom domain from **Workers & Pages → your project → Custom domains**. The Docusaurus `url` is already set to `https://ogtechstories.com`; update it if the final domain changes.
+
+Do not commit `build/`, `.docusaurus/`, or `node_modules/`; they are already excluded by `.gitignore`.

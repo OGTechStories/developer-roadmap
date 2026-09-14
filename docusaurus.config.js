@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import searchLocal from '@easyops-cn/docusaurus-search-local';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -17,6 +18,7 @@ const config = {
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    faster: false, // Use the stable Webpack dev bundler instead of Rspack.
   },
 
   // Set the production url of your site here
@@ -67,7 +69,7 @@ const config = {
 
   plugins: [
     [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
+      searchLocal,
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       ({
         hashed: true,
