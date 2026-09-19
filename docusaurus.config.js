@@ -95,47 +95,20 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'roadmapSidebar',
             position: 'left',
             label: 'Roadmaps',
           },
-          {to: '/blog', label: 'Stories', position: 'left'},
+          {
+            type: 'docSidebar',
+            sidebarId: 'interviewSidebar',
+            position: 'left',
+            label: 'Interview Questions',
+          },
         ],
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Learning Roadmaps',
-            items: [
-              {
-                label: 'Python Fundamentals',
-                to: '/docs/Programming/Python/introduction',
-              },
-              {
-                label: 'Computer Science Basics',
-                to: '/docs/Programming/Python/introduction',
-              },
-              {
-                label: 'Engineering Principles',
-                to: '/docs/Programming/Python/introduction',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com',
-              },
-              {
-                label: 'Twitter / X',
-                href: 'https://twitter.com',
-              },
-            ],
-          },
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} OGTechStories. Built for developers with passion.`,
       },
       prism: {

@@ -1,14 +1,14 @@
 .heroBanner {
-  background-color: #090d16;
+  background: radial-gradient(circle at 78% 24%, rgba(14, 165, 164, 0.18), transparent 28%), linear-gradient(135deg, #0b1720 0%, #0e2630 55%, #123c3f 100%);
   color: #f8fafc;
-  padding: 8rem 0 7rem;
+  padding: 3.5rem 0 3rem;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--og-line);
 }
 
 [data-theme='light'] .heroBanner {
-  background-color: #f8fafc;
+  background: radial-gradient(circle at 78% 24%, rgba(14, 165, 164, 0.16), transparent 28%), linear-gradient(135deg, #eef8f5 0%, #f5fbfa 55%, #e5f2ee 100%);
   color: #0f172a;
 }
 
@@ -20,7 +20,7 @@
   transform: translateX(-50%);
   width: 750px;
   height: 450px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, rgba(168, 85, 247, 0.12) 40%, rgba(6, 182, 212, 0) 70%);
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.18) 0%, rgba(14, 165, 164, 0.08) 40%, rgba(6, 182, 212, 0) 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -31,7 +31,7 @@
   right: 10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.18) 0%, rgba(99, 102, 241, 0) 70%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, rgba(14, 165, 164, 0) 70%);
   filter: blur(50px);
   pointer-events: none;
 }
@@ -42,20 +42,20 @@
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: 9999px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.3);
   color: var(--ifm-color-primary);
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
   backdrop-filter: blur(8px);
 }
 
 .heroBanner h1 {
   font-family: var(--ifm-heading-font-family);
-  font-size: clamp(2.75rem, 6.5vw, 5.25rem);
+  font-size: clamp(2.35rem, 5.5vw, 4.25rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -64,14 +64,14 @@
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 40%, #06b6d4 100%);
+  background: linear-gradient(135deg, #2dd4bf 0%, #fbbf24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .heroSubtitle {
   color: var(--og-muted);
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.65;
   max-width: 650px;
   font-weight: 400;
@@ -81,7 +81,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin-top: 2.75rem;
+  margin-top: 2rem;
   align-items: center;
 }
 
@@ -116,10 +116,89 @@
   gap: 1.5rem;
 }
 
+.roadmapSections {
+  display: grid;
+  gap: 1rem;
+}
+
+.roadmapSection {
+  background: var(--og-card-bg);
+  border: 1px solid var(--og-card-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--og-card-shadow);
+}
+
+.sectionHeading {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.sectionNumber {
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding-top: 0.25rem;
+}
+
+.sectionHeading h3 {
+  font-size: 1.35rem;
+  margin: 0 0 0.35rem;
+}
+
+.sectionHeading p {
+  color: var(--og-muted);
+  margin: 0;
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.topicLink {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--og-line);
+  border-radius: 6px;
+  color: inherit;
+  padding: 0.8rem 0.9rem;
+  text-decoration: none !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.topicLink > span:first-child {
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
+}
+
+.topicLink strong {
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.topicLink > span:last-child {
+  color: var(--og-muted);
+}
+
+.topicLink:hover {
+  background: rgba(20, 184, 166, 0.08);
+  border-color: var(--ifm-color-primary);
+  color: inherit;
+  transform: translateX(3px);
+}
+
 .roadmapCard {
   background: var(--og-card-bg);
   border: 1px solid var(--og-card-border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 1.75rem;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none !important;
@@ -134,8 +213,22 @@
 
 .roadmapCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 15px 35px -5px rgba(99, 102, 241, 0.2);
+  border-color: rgba(14, 165, 164, 0.55);
+  box-shadow: 0 15px 35px -5px rgba(14, 165, 164, 0.18);
+}
+
+.cardTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.cardNumber {
+  color: var(--ifm-color-primary);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .cardTag {
@@ -144,7 +237,7 @@
   font-weight: 700;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(14, 165, 164, 0.1);
   color: var(--ifm-color-primary);
   margin-bottom: 1.25rem;
   text-transform: uppercase;
@@ -176,7 +269,7 @@
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 5rem 1.5rem;
+    padding: 2.75rem 1.5rem;
   }
 }
 
@@ -184,5 +277,13 @@
   .buttons a {
     width: 100%;
     text-align: center;
+  }
+
+  .topicGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmapSection {
+    padding: 1.1rem;
   }
 }
