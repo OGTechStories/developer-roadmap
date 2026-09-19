@@ -94,14 +94,12 @@ const config = {
         title: 'OGTechStories',
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'roadmapSidebar',
+            to: '/docs/Roadmaps/introduction',
             position: 'left',
             label: 'Roadmaps',
           },
           {
-            type: 'docSidebar',
-            sidebarId: 'interviewSidebar',
+            to: '/docs/Interview-Questions/Python/fundamentals',
             position: 'left',
             label: 'Interview Questions',
           },
