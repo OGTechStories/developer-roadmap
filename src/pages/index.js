@@ -133,7 +133,7 @@ function HomepageHeader() {
             to="/docs/Roadmaps/introduction">
             Explore the roadmap
           </Link>
-          <Link className="button button--secondary button--lg" to="/docs/Interview-Questions/Python/introduction">
+          <Link className="button button--secondary button--lg" to="/docs/Interview-Questions/Python/fundamentals">
             Practice questions
           </Link>
         </div>
