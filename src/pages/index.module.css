@@ -154,6 +154,12 @@
   margin: 0;
 }
 
+.sectionOverviewLink {
+  display: inline-block;
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+
 .topicGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

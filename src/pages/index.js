@@ -106,6 +106,79 @@ const RoadmapSections = [
     description: 'Explore leadership, architecture, consulting, and founder paths.',
     topics: [['Staff / Principal Engineer', 'staff-principal-engineer'], ['Engineering Manager', 'engineering-manager'], ['Solutions Architect', 'solutions-architect'], ['Consultant / Specialist', 'consultant-specialist'], ['Founder / CTO', 'founder-cto']],
   },
+  {
+    number: '16',
+    title: 'AI Foundations',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/ai-foundations',
+    description: 'Build a practical mental model for modern AI, machine learning, and language models.',
+    topics: [['AI, ML & Generative AI Overview', 'ai-ml-generative-ai-overview'], ['How LLMs Work', 'how-llms-work'], ['Strengths & Limitations of AI', 'strengths-limitations-ai'], ['Choosing the Right Model', 'choosing-right-model']],
+  },
+  {
+    number: '17',
+    title: 'AI-Assisted Development',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/ai-assisted-development',
+    description: 'Use AI coding tools thoughtfully while keeping engineering judgment in the loop.',
+    topics: [['AI Coding Assistants', 'ai-coding-assistants'], ['Prompting for Code', 'prompting-for-code'], ['Reviewing & Verifying AI-Generated Code', 'reviewing-verifying-ai-generated-code'], ['Agentic Coding Workflows', 'agentic-coding-workflows'], ['Context Engineering', 'context-engineering']],
+  },
+  {
+    number: '18',
+    title: 'Building with AI',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/building-with-ai',
+    description: 'Learn the building blocks for reliable applications powered by language models.',
+    topics: [['Prompt Engineering', 'prompt-engineering'], ['LLM APIs', 'llm-apis'], ['Structured Outputs & Function Calling', 'structured-outputs-function-calling'], ['Streaming Responses', 'streaming-responses'], ['Embeddings & Semantic Search', 'embeddings-semantic-search'], ['Vector Databases', 'vector-databases'], ['RAG (Retrieval-Augmented Generation)', 'rag-retrieval-augmented-generation']],
+  },
+  {
+    number: '19',
+    title: 'Agents & Automation',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/agents--automation',
+    description: 'Understand the tools and patterns behind AI agents and workflow automation.',
+    topics: [['AI Agents', 'ai-agents'], ['MCP & Tool Integration', 'mcp-tool-integration'], ['Agent Frameworks', 'agent-frameworks'], ['AI Workflow Automation', 'ai-workflow-automation']],
+  },
+  {
+    number: '20',
+    title: 'Production AI',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/production-ai',
+    description: 'Operate AI systems with measurable quality, reliability, performance, and cost.',
+    topics: [['LLM Evaluation', 'llm-evaluation'], ['AI Observability & Monitoring', 'ai-observability-monitoring'], ['Cost & Latency Optimization', 'cost-latency-optimization'], ['AI Reliability (Retries, Fallbacks, Rate Limits)', 'ai-reliability-retries-fallbacks-rate-limits'], ['Deploying AI Apps', 'deploying-ai-apps']],
+  },
+  {
+    number: '21',
+    title: 'AI Security & Responsibility',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/ai-security--responsibility',
+    description: 'Build AI features with privacy, security, safety, and responsible use in mind.',
+    topics: [['Prompt Injection & AI Security', 'prompt-injection-ai-security'], ['Data Privacy & Sensitive Data', 'data-privacy-sensitive-data'], ['Guardrails & Safety', 'guardrails-safety'], ['Compliance & Copyright Awareness', 'compliance-copyright-awareness']],
+  },
+  {
+    number: '22',
+    title: 'AI for Your Own Track',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/ai-for-your-own-track',
+    description: 'Choose the AI applications that fit your existing engineering path.',
+    topics: [['AI for Backend', 'ai-for-backend'], ['AI for Frontend (Chat UIs, AI UX)', 'ai-for-frontend-chat-uis-ai-ux'], ['AI for DevOps (LLMOps)', 'ai-for-devops-llmops'], ['AI for Testing & QA', 'ai-for-testing-qa'], ['AI for Data Engineering', 'ai-for-data-engineering']],
+  },
+  {
+    number: '23',
+    title: 'AI Developer Track',
+    roadmapRoot: 'ai',
+    overview: '/docs/category/ai-developer-track',
+    description: 'Follow a deeper path for machine learning and AI engineering careers.',
+    topics: [['Math for AI', 'math-for-ai'], ['Machine Learning', 'machine-learning'], ['Deep Learning', 'deep-learning'], ['Transformers & Hugging Face', 'transformers-hugging-face'], ['Fine-Tuning', 'fine-tuning'], ['Open-Source Models & Local Inference', 'open-source-models-local-inference'], ['MLOps', 'mlops'], ['Multimodal AI', 'multimodal-ai'], ['Multi-Agent Systems', 'multi-agent-systems']],
+  },
+  {
+    number: '24',
+    title: 'Durable Skills for the AI Era',
+    roadmapRoot: 'ai',
+    sectionSlug: 'durable-skills-ai-era',
+    overview: '/docs/category/durable-skills-for-the-ai-era',
+    description: 'Strengthen the durable reasoning and learning habits that stay valuable as tools change.',
+    topics: [['Problem Decomposition', 'problem-decomposition'], ['Critical Thinking & Code Review', 'critical-thinking-code-review'], ['Knowing When to Use AI and When Not To', 'knowing-when-to-use-ai-and-when-not-to'], ['Staying Current with AI', 'staying-current-with-ai'], ['Building AI Side Projects', 'building-ai-side-projects']],
+  },
 ];
 
 function toSlug(value) {
@@ -162,11 +235,16 @@ function RoadmapShowcase() {
                 <div>
                   <Heading as="h3">{section.title}</Heading>
                   <p>{section.description}</p>
+                  {section.overview && (
+                    <Link className={styles.sectionOverviewLink} to={section.overview}>
+                      View section overview
+                    </Link>
+                  )}
                 </div>
               </div>
               <div className={styles.topicGrid}>
                 {section.topics.map(([title, slug], index) => (
-                  <Link key={slug} to={`/docs/Roadmaps/${toSlug(section.title)}/${slug}/introduction`} className={styles.topicLink}>
+                  <Link key={slug} to={`/docs/Roadmaps/${section.roadmapRoot ? `${section.roadmapRoot}/` : ''}${section.sectionSlug || toSlug(section.title)}/${slug}/introduction`} className={styles.topicLink}>
                     <span>{String(index + 1).padStart(2, '0')}</span>
                     <strong>{title}</strong>
                     <span aria-hidden="true">↗</span>
