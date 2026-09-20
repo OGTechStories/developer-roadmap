@@ -1,0 +1,10 @@
+.comments {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.comments h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
