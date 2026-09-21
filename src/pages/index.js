@@ -181,6 +181,11 @@ const RoadmapSections = [
   },
 ];
 
+// Keep every roadmap topic visible while only published topics behave as links.
+const AvailableTopics = new Set([
+  'infrastructure-as-code-terraform',
+]);
+
 function toSlug(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
@@ -226,6 +231,10 @@ function RoadmapShowcase() {
           <p className={styles.sectionSubtitle}>
             Follow the sequence from foundations to leadership. Every topic has a dedicated page that we will expand with practical lessons, examples, and projects over time.
           </p>
+          <div className={styles.topicLegend} aria-label="Topic availability">
+            <span><i className={styles.availableDot} /> Available now</span>
+            <span><i className={styles.upcomingDot} /> Coming soon</span>
+          </div>
         </div>
         <div className={styles.roadmapSections}>
           {RoadmapSections.map((section) => (
@@ -243,13 +252,36 @@ function RoadmapShowcase() {
                 </div>
               </div>
               <div className={styles.topicGrid}>
-                {section.topics.map(([title, slug], index) => (
-                  <Link key={slug} to={`/docs/Roadmaps/${section.roadmapRoot ? `${section.roadmapRoot}/` : ''}${section.sectionSlug || toSlug(section.title)}/${slug}/introduction`} className={styles.topicLink}>
-                    <span>{String(index + 1).padStart(2, '0')}</span>
-                    <strong>{title}</strong>
-                    <span aria-hidden="true">↗</span>
-                  </Link>
-                ))}
+                {section.topics.map(([title, slug], index) => {
+                  const isAvailable = AvailableTopics.has(slug);
+                  const topicContent = (
+                    <>
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <strong>{title}</strong>
+                      <span className={styles.topicStatus} aria-hidden="true">
+                        {isAvailable ? '↗' : 'Soon'}
+                      </span>
+                    </>
+                  );
+
+                  if (!isAvailable) {
+                    return (
+                      <div
+                        key={slug}
+                        className={`${styles.topicLink} ${styles.topicUnavailable}`}
+                        title={`${title} content will be added in the future`}
+                        aria-label={`${title}, coming soon`}>
+                        {topicContent}
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link key={slug} to={`/docs/Roadmaps/${section.roadmapRoot ? `${section.roadmapRoot}/` : ''}${section.sectionSlug || toSlug(section.title)}/${slug}/introduction`} className={styles.topicLink}>
+                      {topicContent}
+                    </Link>
+                  );
+                })}
               </div>
             </section>
           ))}

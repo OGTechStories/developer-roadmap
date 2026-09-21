@@ -110,6 +110,36 @@
   font-size: 1.1rem;
 }
 
+.topicLegend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: var(--og-muted);
+  font-size: 0.82rem;
+  margin-top: 1rem;
+}
+
+.topicLegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.topicLegend i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+}
+
+.availableDot {
+  background: var(--ifm-color-primary);
+}
+
+.upcomingDot {
+  background: #fbbf24;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -194,11 +224,31 @@
   color: var(--og-muted);
 }
 
+.topicStatus {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .topicLink:hover {
   background: rgba(20, 184, 166, 0.08);
   border-color: var(--ifm-color-primary);
   color: inherit;
   transform: translateX(3px);
+}
+
+.topicUnavailable {
+  cursor: not-allowed;
+  opacity: 0.62;
+  background: color-mix(in srgb, var(--og-card-bg) 88%, #fbbf24 12%);
+}
+
+.topicUnavailable:hover {
+  background: color-mix(in srgb, var(--og-card-bg) 88%, #fbbf24 12%);
+  border-color: rgba(251, 191, 36, 0.55);
+  color: inherit;
+  transform: none;
 }
 
 .roadmapCard {
