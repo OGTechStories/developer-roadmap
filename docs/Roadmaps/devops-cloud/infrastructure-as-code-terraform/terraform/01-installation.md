@@ -159,7 +159,7 @@ HashiCorp gives you a free, ready-made practice computer that runs in your web b
 - 🪄 LocalStack, a fake "mini AWS" on the same machine, so you can practice safely without a real AWS account and without any cost
 - ☁️ AWS CLI (the `aws` command is set up to talk to LocalStack)
 
-:::caution Good to know before you start
+:::caution[Good to know before you start]
 - Each session lasts **up to 1 hour**, then it shuts down.
 - **Nothing is saved** between sessions — copy any code you want to keep before the timer ends.
 - LocalStack uses the free edition, so a few AWS services may not work. Simple things like S3 buckets work well for practice.
@@ -326,7 +326,7 @@ In the HashiCorp Sandbox, LocalStack was already set up for you. Here you set it
 - 💸 **It is safe and free of AWS charges.** Nothing is created in a real AWS account, so you cannot get an AWS bill by accident.
 - ⚡ **It is fast.** Practice, break things, and start again in seconds.
 
-:::info Important: LocalStack needs an account and an "Auth Token"
+:::info[Important: LocalStack needs an account and an "Auth Token"]
 Since March 2026, LocalStack requires a free account and an **Auth Token** (a secret password-like text) to start. LocalStack offers a free **Hobby** plan for non-commercial use (like learning). Plans can change, so check [localstack.cloud/pricing](https://www.localstack.cloud/pricing) if anything looks different.
 
 The HashiCorp Sandbox does **not** need this — it's only for setting up LocalStack on your own machine.
@@ -400,7 +400,7 @@ docker run -d --rm --name localstack -p 127.0.0.1:4566:4566 -e LOCALSTACK_AUTH_T
 | `-e LOCALSTACK_AUTH_TOKEN` | Pass your token into LocalStack |
 | `localstack/localstack` | The LocalStack program to run (downloaded the first time, so it can take a few minutes) |
 
-:::tip Optional easier way on macOS (`lstk`)
+:::tip[Optional easier way on macOS (`lstk`)]
 LocalStack also has a helper tool called `lstk` that handles the login for you.
 
 ```bash
@@ -487,7 +487,7 @@ resource "aws_s3_bucket" "demo" {
 
 > If you use other AWS services later (for example DynamoDB), add a line for each one inside `endpoints`, using the same address.
 
-:::note Windows tip
+:::note[Windows tip]
 If Notepad saves the file as `main.tf.txt`, rename it to `main.tf`.
 :::
 
@@ -607,7 +607,7 @@ Most of the time, they do. Small differences between versions usually cause no p
 - **Working in a team:** everyone should use the same or a similar version, so nobody breaks each other's work
 - **Reading error messages:** some errors say "this requires Terraform version X", and you need to know yours to fix it
 
-:::tip Simple rule of thumb
+:::tip[Simple rule of thumb]
 Install the latest version, check it with `terraform -version`, and don't worry about it unless you see an error that mentions a version.
 
 The check takes only a few seconds, but it can save you a lot of confusion later.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 15
 title: Variables and Outputs
 description: Make Terraform configurations reusable with input variables, locals, and outputs.
 ---

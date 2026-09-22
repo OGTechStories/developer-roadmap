@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 9
 title: Providers and Resources
 description: Learn how Terraform providers connect configurations to infrastructure platforms.
 ---
