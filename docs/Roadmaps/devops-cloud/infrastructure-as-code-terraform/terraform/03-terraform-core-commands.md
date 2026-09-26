@@ -13,7 +13,9 @@ A simple guide to the 4 commands you will use every single time you work with Te
 This guide assumes you already have Terraform installed on your system with LocalStack or use a sandbox with LocalStack environment running. See the [Terraform Install Guide](./installation) if you haven't set that up yet.
 :::
 
-For the HashiCorp Sandbox, go to [developer.hashicorp.com/terraform/sandbox](https://developer.hashicorp.com/terraform/sandbox).
+:::tip[Start your sandbox here]
+👉 **[Launch the official Terraform Sandbox](https://developer.hashicorp.com/terraform/sandbox)** — it comes with Terraform, Docker, LocalStack, and the AWS CLI already installed. No signup, no local setup. Every example below can be typed directly into it.
+:::
 
 ---
 
@@ -41,13 +43,13 @@ flowchart LR
     F --> G["terraform destroy<br/>type 'yes'<br/>Removes everything"]
     G --> H["🧹 Back to a<br/>clean slate"]
 
-    style A fill:#e8f0fe,stroke:#4285f4
-    style B fill:#fff4e5,stroke:#f9a825
-    style C fill:#e6f4ea,stroke:#34a853
-    style E fill:#fce8e6,stroke:#ea4335
-    style F fill:#e6f4ea,stroke:#34a853
-    style G fill:#f3e8fd,stroke:#a142f4
-    style H fill:#f1f3f4,stroke:#5f6368
+    style A fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a
+    style B fill:#fff4e5,stroke:#f9a825,color:#1a1a1a
+    style C fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
+    style E fill:#fce8e6,stroke:#ea4335,color:#1a1a1a
+    style F fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
+    style G fill:#f3e8fd,stroke:#a142f4,color:#1a1a1a
+    style H fill:#f1f3f4,stroke:#5f6368,color:#1a1a1a
 ```
 
 **How to read this:** you write your code once, then loop through `plan` and edits until the preview looks right, `apply` to build it for real, and `destroy` whenever you're done and want to clean up.

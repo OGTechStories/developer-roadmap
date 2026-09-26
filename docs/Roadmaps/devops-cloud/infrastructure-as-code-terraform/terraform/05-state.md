@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 16
 title: Terraform State
 description: Understand Terraform state and how to manage it safely in individual and team workflows.
 ---

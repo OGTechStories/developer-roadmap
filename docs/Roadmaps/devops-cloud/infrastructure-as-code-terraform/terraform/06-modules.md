@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 17
 title: Terraform Modules
 description: Organize Terraform configuration into reusable modules.
 ---

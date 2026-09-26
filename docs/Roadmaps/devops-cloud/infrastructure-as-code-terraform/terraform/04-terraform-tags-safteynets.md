@@ -10,7 +10,9 @@ tags: [terraform, tags, lifecycle, prevent_destroy, replace, forces-new-resource
 :::info[Continuing from the last guide]
 This page picks up where **[Terraform Core Commands: init, plan, apply, destroy](./terraform-core-commands)** left off. If you haven't gone through `init`, `plan`, `apply`, and `destroy` yet, start there first — everything below builds on those four commands.
 :::
-
+:::tip[Start your sandbox here]
+👉 **[Launch the official Terraform Sandbox](https://developer.hashicorp.com/terraform/sandbox)** — it comes with Terraform, Docker, LocalStack, and the AWS CLI already installed. No signup, no local setup. Every example below can be typed directly into it.
+:::
 In the last guide you learned the 4 commands you always run. In this guide you'll learn 4 things that keep you **safe** while you run them:
 
 | Topic | In one line |
@@ -35,10 +37,10 @@ flowchart TD
     D --> H["terraform apply"]
     G --> H
 
-    style D fill:#e6f4ea,stroke:#34a853
-    style F fill:#fce8e6,stroke:#ea4335
-    style G fill:#fff4e5,stroke:#f9a825
-    style H fill:#e8f0fe,stroke:#4285f4
+    style D fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
+    style F fill:#fce8e6,stroke:#ea4335,color:#1a1a1a
+    style G fill:#fff4e5,stroke:#f9a825,color:#1a1a1a
+    style H fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a
 ```
 
 **How to read this:** every change you make lands in one of two buckets — a gentle **update**, or a **replace** (destroy + recreate). `prevent_destroy` is the only thing standing between a risky replace and an actual accident.
@@ -110,12 +112,64 @@ provider "aws" {
 `default_tags` are automatically merged into every resource's own tags. You only add resource-specific tags (like `Project`) on the resource itself.
 :::
 
+Here is how the provider and S3 bucket can be combined in your main.tf:
+
+```hcl
+provider "aws" {
+  region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Environment = "sandbox"
+      ManagedBy   = "terraform"
+    }
+  }
+}
+
+resource "aws_s3_bucket" "demo" {
+  bucket = "my-first-terraform-bucket"
+
+  tags = {
+    Owner   = "your-name"
+    Project = "terraform-practice"
+  }
+}
+```
+With this configuration, the S3 bucket receives all four tags:
+```Environment = sandbox
+ManagedBy   = terraform
+Owner       = your-name
+Project     = terraform-practice
+```
+
+The first two come from default_tags, while Owner and Project are specific to the S3 bucket.
+
+### Verify the tags using Terraform state
+
+After applying the configuration, you can inspect the resource stored in Terraform state:
+
+```
+terraform state show aws_s3_bucket.demo
+```
+You should see information about the S3 bucket, including its tags:
+```
+tags = {
+  "Environment" = "sandbox"
+  "ManagedBy"   = "terraform"
+  "Owner"       = "your-name"
+  "Project"     = "terraform-practice"
+}
+```
+
 ### Try it yourself
 
 1. Add the `tags` block to the `main.tf` from the previous guide.
-2. Run `terraform plan` — check the tags appear with a `+`.
-3. Run `terraform apply`, then change the `Owner` value and run `terraform plan` again.
-4. Confirm it shows `~` (update), not `-/+` (replace).
+2. Run `terraform init`
+3. Run `terraform plan` — check the tags appear with a `+`.
+4. Run `terraform apply`, then change the `Owner` value and run `terraform plan` again.
+5. Run `terraform state show aws_s3_bucket.demo` -Check that all four tags are present in the Terraform state.
+6. Change the Owner value and run terraform plan again.
+7. Confirm that Terraform shows ~ (update), not -/+ (replace).
 
 ---
 
@@ -276,9 +330,9 @@ flowchart LR
     E -- Yes --> F["Use create_before_destroy<br/>(see tip below)"]
     E -- No --> G["Default order:<br/>destroy old, then create new"]
 
-    style C fill:#e6f4ea,stroke:#34a853
-    style D fill:#fce8e6,stroke:#ea4335
-    style F fill:#e8f0fe,stroke:#4285f4
+    style C fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
+    style D fill:#fce8e6,stroke:#ea4335,color:#1a1a1a
+    style F fill:#e8f0fe,stroke:#4285f4,color:#1a1a1a
 ```
 
 :::tip[Reducing downtime on a forced replacement]
@@ -389,9 +443,9 @@ flowchart TD
     C --> E["terraform plan<br/>should say 'No changes'"]
     D --> F["Plan will show<br/>-/+ replace — expected"]
 
-    style C fill:#e6f4ea,stroke:#34a853
-    style D fill:#fff4e5,stroke:#f9a825
-    style E fill:#e6f4ea,stroke:#34a853
+    style C fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
+    style D fill:#fff4e5,stroke:#f9a825,color:#1a1a1a
+    style E fill:#e6f4ea,stroke:#34a853,color:#1a1a1a
 ```
 
 ### Try it yourself
@@ -503,8 +557,5 @@ Yes, but the tags won't save it from replacement — tags are metadata, they don
 **Is any of this safe to practice in the sandbox?**
 Yes — everything here (including the `prevent_destroy` example) is safe in LocalStack/sandbox. Just remember to remove `prevent_destroy` before your final `terraform destroy` cleanup, as shown above.
 
-:::note[Site maintainer note]
-Like the previous page, this page needs Docusaurus's Mermaid theme enabled to render the diagrams above as pictures instead of plain code blocks — see the setup note at the end of this page.
-:::
 
 ---

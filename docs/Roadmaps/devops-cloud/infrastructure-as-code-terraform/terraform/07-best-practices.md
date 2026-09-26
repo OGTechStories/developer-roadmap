@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+sidebar_position: 18
 title: Terraform Best Practices
 description: Apply practical conventions for maintainable, secure, and reviewable Terraform code.
 ---
