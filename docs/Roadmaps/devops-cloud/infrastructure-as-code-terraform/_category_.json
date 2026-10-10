@@ -1,1 +1,7 @@
-{"label":"Infrastructure as Code (Terraform)","position":6}
+{
+	"label": "Infrastructure as Code (Terraform)",
+	"position": 6,
+	"collapsed": false,
+	"collapsible": true,
+    "link":{"type":"generated-index"}
+}
