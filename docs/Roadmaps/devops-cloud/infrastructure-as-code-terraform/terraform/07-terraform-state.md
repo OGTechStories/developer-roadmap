@@ -223,7 +223,7 @@ resource "aws_s3_bucket" "demo" {
 
 ### `terraform state mv` — rename without destroying
 
-You already saw this one in the [Safety Nets guide](./terraform-lifecycle-tags-safety) — it renames a resource inside state without touching the real infrastructure.
+You already saw this one in the [Safety Nets guide](./terraform-tags-safteynets) — it renames a resource inside state without touching the real infrastructure.
 
 ```bash
 terraform state mv aws_s3_bucket.demo aws_s3_bucket.main
@@ -283,9 +283,18 @@ flowchart LR
 ### Try it yourself
 
 1. Apply a bucket with a tag, e.g. `Environment = "sandbox"`.
+```hcl
+resource "aws_s3_bucket" "demo" {
+  bucket = "state-practice-bucket"
+
+  tags = {
+    Environment = "sandbox"
+  }
+}
+```
 2. Manually change that tag using the AWS CLI (or console, if available in your sandbox):
    ```bash
-   aws s3api put-bucket-tagging --bucket my-practice-bucket --tagging 'TagSet=[{Key=Environment,Value=production}]'
+   aws s3api put-bucket-tagging --bucket state-practice-bucket --tagging 'TagSet=[{Key=Environment,Value=production}]'
    ```
 3. Run `terraform plan` again — Terraform detects the drift and offers to change it back to match your code.
 
