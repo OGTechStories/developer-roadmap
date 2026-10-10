@@ -214,7 +214,7 @@ terraform output db_password
 ```
 
 :::warning
-`sensitive = true` only hides the value from normal CLI output — running `terraform output <name>` directly, or `-json`, still reveals it. It's also stored in plain text in the state file, just like [sensitive variables](./terraform-input-variables) are. Protect your state file (see the [State guide](./terraform-state-explained)) as the real safeguard.
+`sensitive = true` only hides the value from normal CLI output — running `terraform output <name>` directly, or `-json`, still reveals it. It's also stored in plain text in the state file, just like [sensitive variables](./terraform-input-variables) are. Protect your state file (see the [State guide](./terraform-state)) as the real safeguard.
 :::
 
 ---

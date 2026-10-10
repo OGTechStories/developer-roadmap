@@ -312,7 +312,7 @@ Every Terraform project should exclude these from version control:
 ```
 
 :::warning
-Wait — should `.terraform.lock.hcl` really be ignored? **No, this was a trick to check you're reading closely.** As covered in the [Providers guide](./terraform-providers-explained), you **should commit** `.terraform.lock.hcl` — it locks everyone to the same provider version. Only `.terraform/` (the downloaded files) and any file containing real state or secrets should be ignored.
+Wait — should `.terraform.lock.hcl` really be ignored? **No, this was a trick to check you're reading closely.** As covered in the [Providers guide](./terraform-providers), you **should commit** `.terraform.lock.hcl` — it locks everyone to the same provider version. Only `.terraform/` (the downloaded files) and any file containing real state or secrets should be ignored.
 :::
 
 Corrected version:

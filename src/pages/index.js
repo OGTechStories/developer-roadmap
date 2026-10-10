@@ -245,7 +245,9 @@ function RoadmapShowcase() {
                   <Heading as="h3">{section.title}</Heading>
                   <p>{section.description}</p>
                   {section.overview && (
-                    <Link className={styles.sectionOverviewLink} to={section.overview}>
+                    <Link
+                      className={styles.sectionOverviewLink}
+                      to={section.roadmapRoot === 'ai' ? '/docs/Roadmaps/ai/coming-soon' : section.overview}>
                       View section overview
                     </Link>
                   )}
